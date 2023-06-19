@@ -12,14 +12,17 @@ class StatusesListSeeder extends Seeder
     protected array $statuses_list = [
         [
             'name'     => 'Full',
+            'slug'     => 'full',
             'statuses' => [2, 3, 4, 5]
         ],
         [
             'name'     => 'Base',
+            'slug'     => 'base',
             'statuses' => [2, 3, 4, 5]
         ],
         [
             'name'     => 'Short',
+            'slug'     => 'short',
             'statuses' => [3, 4, 5]
         ],
     ];
@@ -28,13 +31,16 @@ class StatusesListSeeder extends Seeder
     {
         foreach ($this->statuses_list as $item)
         {
-            $value = $this->create($item['name']);
-            $value->statuses()->sync($item['statuses']);
+            $ids = $item['statuses'];
+            unset($item['statuses']);
+            
+            $value = $this->create($item);
+            $value->statuses()->sync($ids);
         }
     }
     
-    protected function create(string $item): StatusesList
+    protected function create(array $item): StatusesList
     {
-        return StatusesList::query()->create(['name' => $item]);
+        return StatusesList::query()->create($item);
     }
 }

@@ -11,6 +11,11 @@ class StatusesList extends Model
     
     protected $fillable = [
         'name',
+        'slug'
+    ];
+    
+    public array $rules = [
+        'slug' => 'unique:statuses_lists'
     ];
     
     public function statuses(): BelongsToMany

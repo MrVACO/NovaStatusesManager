@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace MrVaco\NovaStatusesManager\Nova;
 
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
@@ -64,6 +65,11 @@ class StatusesListResource extends Resource
             ID::make()->sortable(),
             
             Text::make(__('List name'), 'name')
+                ->sortable()
+                ->rules('required'),
+            
+            Slug::make(__('Code'), 'slug')
+                ->from('name')
                 ->sortable()
                 ->rules('required'),
             
