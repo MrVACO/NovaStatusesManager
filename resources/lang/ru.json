@@ -1,0 +1,16 @@
+{
+    "Color": "Цвет",
+    "Default Active": "Активно (по-умолчанию)",
+    "Default Disabled": "Отключено (по-умолчанию)",
+    "Default Draft": "Черновик (по-умолчанию)",
+    "Displayed in lists": "Отображается в списках",
+    "List name": "Название списка",
+    "Lists for statuses": "Списки для статусов",
+    "Lists": "Списки",
+    "Status name": "Название статуса",
+    "Statuses": "Статусы",
+    "Used for statuses": "Используется для статусов",
+    "record": "запись",
+    "status": "статус",
+    "statusa": "статуса"
+}

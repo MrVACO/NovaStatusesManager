@@ -35,6 +35,7 @@ class ToolServiceProvider extends ServiceProvider
         });
         
         Statuses::observe(StatusesObserver::class);
+        \Lang::addJsonPath(__DIR__ . '/../resources/lang');
     }
     
     /**

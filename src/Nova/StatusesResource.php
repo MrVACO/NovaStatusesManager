@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Tag;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
 use Laravel\Nova\Resource;
 use MrVaco\NovaStatusesManager\Models\Statuses;
 
@@ -21,6 +22,16 @@ class StatusesResource extends Resource
     
     public static string $model = Statuses::class;
     
+    public static function label(): string
+    {
+        return __('Statuses');
+    }
+    
+    public static function singularLabel(): string
+    {
+        return __('status');
+    }
+    
     public static $title = 'name';
     
     public static $search = [
@@ -29,23 +40,48 @@ class StatusesResource extends Resource
     
     public function fields(NovaRequest $request): array
     {
+        return $this->getFields();
+    }
+    
+    public function fieldsForUpdate(NovaRequest $request): array
+    {
+        return [
+            Panel::make(__('Update :resource: :title', [
+                'resource' => __('statusa'),
+                'title'    => $this->title()
+            ]), $this->getFields())
+        ];
+    }
+    
+    public function fieldsForDetail(NovaRequest $request): array
+    {
+        return [
+            Panel::make(__(':resource Details: :title', [
+                'resource' => __('statusa'),
+                'title'    => $this->title()
+            ]), $this->getFields())
+        ];
+    }
+    
+    protected function getFields(): array
+    {
         return [
             ID::make()->sortable(),
             
-            Text::make('Name', 'name')
+            Text::make(__('Status name'), 'name')
                 ->sortable()
                 ->rules('required'),
             
-            Color::make('Color', 'color')
+            Color::make(__('Color'), 'color')
                 ->required()
                 ->default('#000000'),
             
-            Boolean::make('Default Active', 'active'),
-            Boolean::make('Default Disabled', 'disabled'),
-            Boolean::make('Default Draft', 'draft'),
+            Boolean::make(__('Default Active'), 'active'),
+            Boolean::make(__('Default Disabled'), 'disabled'),
+            Boolean::make(__('Default Draft'), 'draft'),
             
-            Tag::make('Lists', 'lists', StatusesListResource::class)->preload()->hideFromIndex(),
-            Text::make('Lists', function($value)
+            Tag::make(__('Displayed in lists'), 'lists', StatusesListResource::class)->preload()->hideFromIndex(),
+            Text::make(__('Displayed in lists'), function($value)
             {
                 $lists = $value->lists;
                 $arr   = [];
