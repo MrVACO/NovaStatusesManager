@@ -1,0 +1,30 @@
+{
+    "name": "mr-vaco/nova-statuses-manager",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0",
+        "ziffmedia/nova-select-plus": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MrVaco\\NovaStatusesManager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MrVaco\\NovaStatusesManager\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
