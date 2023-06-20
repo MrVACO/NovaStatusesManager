@@ -32,6 +32,8 @@ class ToolServiceProvider extends ServiceProvider
             Nova::tools([
                 new NovaStatusesManager
             ]);
+            
+            Nova::script('status-field', __DIR__ . '/../dist/js/status-field.js');
         });
         
         Statuses::observe(StatusesObserver::class);
