@@ -80,7 +80,7 @@ class StatusesListResource extends Resource
                 
                 foreach ($lists as $list)
                 {
-                    $arr[] = '<span class="inline-flex whitespace-nowrap px-3 py-1 mx-1 my-1 rounded-full uppercase text-xs font-bold text-white dark:text-gray-900" style="background: ' . $list->color . '">' . $list->name . '</span>';
+                    $arr[] = '<span class="px-2 py-1 mx-1 my-1 text-xs font-bold" style="color: ' . $list->color . '">' . $list->name . '</span>';
                 }
                 
                 return implode($arr);
