@@ -12,6 +12,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use Laravel\Nova\Resource;
+use MrVaco\NovaStatusesManager\Fields\Status;
 use MrVaco\NovaStatusesManager\Models\Statuses;
 
 class StatusesResource extends Resource
@@ -68,11 +69,15 @@ class StatusesResource extends Resource
         return [
             ID::make()->sortable(),
             
+            Status::make(__('Preview'), 'id'),
+            
             Text::make(__('Status name'), 'name')
+                ->hideFromIndex()
                 ->sortable()
                 ->rules('required'),
             
             Color::make(__('Color'), 'color')
+                ->hideFromIndex()
                 ->required()
                 ->default('#000000'),
             
