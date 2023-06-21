@@ -93,10 +93,10 @@ class StatusesResource extends Resource
                 
                 foreach ($lists as $list)
                 {
-                    $arr[] = '<span class="px-1 py-1 mx-1 my-1 font-bold text-primary-600 dark:text-white">' . $list->name . '</span>';
+                    $arr[] = $list->name;
                 }
                 
-                return implode($arr);
+                return implode(', ', $arr);
             })->asHtml()->onlyOnIndex(),
         ];
     }
