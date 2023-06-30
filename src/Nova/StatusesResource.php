@@ -69,7 +69,9 @@ class StatusesResource extends Resource
         return [
             ID::make()->sortable(),
             
-            Status::make(__('Preview'), 'id'),
+            Status::make(__('Preview'), 'id')
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
             
             Text::make(__('Status name'), 'name')
                 ->hideFromIndex()
