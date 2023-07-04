@@ -95,7 +95,7 @@ class StatusesResource extends Resource
                 
                 foreach ($lists as $list)
                 {
-                    $arr[] = $list->name;
+                    $arr[] = '<span class="text-xs">' . $list->name . '</span>';
                 }
                 
                 return implode(', ', $arr);
