@@ -1,19 +1,19 @@
 ![Mr.VACO Statuses Manager](https://preview.dragon-code.pro/Mr.VACO/Statuses%20Manager.svg?pretty-title=0&github%5Brepository%5D=MrVACO%2FNovaStatusesManager&mode=auto)
 
-Плагин/Модуль/Пакет... Код - Унификация статусов для дальнейшего применения в своих пакетах.
+Plugin/Module/Package... Code - Unification of statuses for further use in their packages.
 
-# Установка
+# Installation
 
 1. ```composer require mr-vaco/nova-statuses-manager```
 2. ```php artisan migrate --path=vendor/mr-vaco/nova-statuses-manager/database/migrations```
 3. ```php artisan db:seed --class=\\MrVaco\\NovaStatusesManager\\Seeders\\StatusesSeeder```
 4. ```php artisan db:seed --class=\\MrVaco\\NovaStatusesManager\\Seeders\\StatusesListSeeder```
 
-# Использование
+# Using
 
-- ```StatusClass::LIST('this_code_from_list')``` - Получение списка статусов по "code" параметру листа - по-умолчанию: full / base / short
+- ```StatusClass::LIST('this_code_from_list')``` - Getting a list of statuses by "code" sheet parameter - by default: full / base / short
 
-- ```StatusClass::DEFAULT_ID()``` - объект - получить первый по ID статус
+- ```StatusClass::DEFAULT_ID()``` - object - get the first by ID status
 
 ```php
 StatusClass::DEFAULT_ID()->id
@@ -21,7 +21,7 @@ StatusClass::DEFAULT_ID()->name
 StatusClass::DEFAULT_ID()->color
 ```
 
-- ```StatusClass::ACTIVE()``` - объект - получить статус "активно" (по-умолчанию)
+- ```StatusClass::ACTIVE()``` - object - get status "active" (default)
 
 ```php
 StatusClass::ACTIVE()->id
@@ -29,7 +29,7 @@ StatusClass::ACTIVE()->name
 StatusClass::ACTIVE()->color
 ```
 
-- ```StatusClass::DISABLED()``` - объект - получить статус "отключено" (по-умолчанию)
+- ```StatusClass::DISABLED()``` - object - get "disabled" status (default)
 
 ```php
 StatusClass::DISABLED()->id
@@ -37,7 +37,7 @@ StatusClass::DISABLED()->name
 StatusClass::DISABLED()->color
 ```
 
-- ```StatusClass::DRAFT()``` - объект - получить статус "черновик" (по-умолчанию)
+- ```StatusClass::DRAFT()``` - object - get "draft" status (default)
 
 ```php
 StatusClass::DRAFT()->id
@@ -45,14 +45,14 @@ StatusClass::DRAFT()->name
 StatusClass::DRAFT()->color
 ```
 
-- ```StatusClass::BY_ID($id)``` - объект - получить статус по ID
+- ```StatusClass::BY_ID($id)``` - object - get status by ID
 
 ```php
 StatusClass::BY_ID($id)->name
 StatusClass::BY_ID($id)->color
 ```
 
-### Использование в ресурсах Laravel Nova:
+### Use in resources Laravel Nova:
 
 ```php
 use MrVaco\NovaStatusesManager\Classes\StatusClass;
