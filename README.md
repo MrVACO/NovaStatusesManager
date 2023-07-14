@@ -69,3 +69,8 @@ public function fields(NovaRequest $request): array
     ];
 }
 ```
+
+![Statuses Index](screenshots/statuses-index.png)
+![Statuses Detail](screenshots/statuses-detail.png)
+![Statuses Form](screenshots/statuses-form.png)
+![Statuses List Index](screenshots/statuses-list-index.png)
