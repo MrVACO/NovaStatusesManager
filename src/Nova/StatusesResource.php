@@ -58,7 +58,7 @@ class StatusesResource extends Resource
     {
         return [
             Panel::make(__(':resource Details: :title', [
-                'resource' => __('statusa'),
+                'resource' => '',
                 'title'    => $this->title()
             ]), $this->getFields())
         ];
