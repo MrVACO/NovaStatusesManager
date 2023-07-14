@@ -2,6 +2,8 @@
 
 Plugin/Module/Package... Code - Unification of statuses for further use in their packages.
 
+> [RU readme](https://github.com/MrVACO/NovaStatusesManager/blob/main/README.ru.md)
+
 # Installation
 
 1. ```composer require mr-vaco/nova-statuses-manager```
