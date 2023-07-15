@@ -76,18 +76,26 @@ class StatusesResource extends Resource
             Text::make(__('Status name'), 'name')
                 ->hideFromIndex()
                 ->sortable()
-                ->rules('required'),
+                ->rules('required')
+                ->width(6)
+                ->fullWidth(),
+            
+            Tag::make(__('Displayed in lists'), 'lists', StatusesListResource::class)
+                ->preload()
+                ->hideFromIndex()
+                ->width(6)
+                ->fullWidth(),
             
             Color::make(__('Color'), 'color')
                 ->hideFromIndex()
                 ->required()
-                ->default('#000000'),
+                ->default('#000000')
+                ->width(3),
             
-            Boolean::make(__('Default Active'), 'active'),
-            Boolean::make(__('Default Disabled'), 'disabled'),
-            Boolean::make(__('Default Draft'), 'draft'),
+            Boolean::make(__('Default Active'), 'active')->width(3),
+            Boolean::make(__('Default Disabled'), 'disabled')->width(3),
+            Boolean::make(__('Default Draft'), 'draft')->width(3),
             
-            Tag::make(__('Displayed in lists'), 'lists', StatusesListResource::class)->preload()->hideFromIndex(),
             Text::make(__('Displayed in lists'), function($value)
             {
                 $lists = $value->lists;
@@ -99,7 +107,9 @@ class StatusesResource extends Resource
                 }
                 
                 return implode(', ', $arr);
-            })->asHtml()->onlyOnIndex(),
+            })
+                ->asHtml()
+                ->onlyOnIndex(),
         ];
     }
     
