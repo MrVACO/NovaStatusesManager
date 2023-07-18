@@ -1,15 +1,18 @@
 {
     "name": "mr-vaco/nova-statuses-manager",
-    "description": "A Laravel Nova tool.",
+    "description": "A Laravel Nova tool - Unification of statuses for further use in their packages",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "status",
+        "statuses",
+        "nova statuses"
     ],
     "license": "MIT",
     "require": {
         "php": "^7.4|^8.0",
         "laravel/nova": "^4.0",
-        "mr-vaco/nova-panels": "^1.0"
+        "mr-vaco/nova-panels": "^1.0.2"
     },
     "autoload": {
         "psr-4": {

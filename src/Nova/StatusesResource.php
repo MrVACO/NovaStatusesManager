@@ -77,14 +77,12 @@ class StatusesResource extends Resource
                 ->hideFromIndex()
                 ->sortable()
                 ->rules('required')
-                ->width(6)
-                ->fullWidth(),
+                ->width(6),
             
             Tag::make(__('Displayed in lists'), 'lists', StatusesListResource::class)
                 ->preload()
                 ->hideFromIndex()
-                ->width(6)
-                ->fullWidth(),
+                ->width(6),
             
             Color::make(__('Color'), 'color')
                 ->hideFromIndex()
