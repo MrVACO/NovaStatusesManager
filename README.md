@@ -7,9 +7,8 @@ Plugin/Module/Package... Code - Unification of statuses for further use in their
 # Installation
 
 1. ```composer require mr-vaco/nova-statuses-manager```
-2. ```php artisan migrate --path=vendor/mr-vaco/nova-statuses-manager/database/migrations```
-3. ```php artisan db:seed --class=\\MrVaco\\NovaStatusesManager\\Seeders\\StatusesSeeder```
-4. ```php artisan db:seed --class=\\MrVaco\\NovaStatusesManager\\Seeders\\StatusesListSeeder```
+2. ```php artisan vendor:publish --tag=mr_vaco__statuses```
+3. ```php artisan migrate```
 
 # Using
 

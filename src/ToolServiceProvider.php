@@ -2,6 +2,9 @@
 
 namespace MrVaco\NovaStatusesManager;
 
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
@@ -37,7 +40,9 @@ class ToolServiceProvider extends ServiceProvider
         });
         
         Statuses::observe(StatusesObserver::class);
-        \Lang::addJsonPath(__DIR__ . '/../resources/lang');
+        Lang::addJsonPath(__DIR__ . '/../resources/lang');
+        
+        $this->forPublish();
     }
     
     /**
@@ -71,5 +76,34 @@ class ToolServiceProvider extends ServiceProvider
             StatusesResource::class,
             StatusesListResource::class
         ]);
+    }
+    
+    protected function forPublish()
+    {
+        if (!$this->app->runningInConsole())
+        {
+            return;
+        }
+        
+        $this->publishes([
+            __DIR__ . '/../database/migrations/create_statuses_table.stub'       => $this->getMigrationFileName('create_statuses_table.php'),
+            __DIR__ . '/../database/migrations/create_statuses_lists_table.stub' => $this->getMigrationFileName('create_statuses_lists_table.php'),
+            __DIR__ . '/../database/migrations/fill_statuses_table.stub'         => $this->getMigrationFileName('fill_statuses_table.php'),
+        ], 'mr_vaco__statuses');
+    }
+    
+    /**
+     * Returns existing migration file if found, else uses the current timestamp.
+     */
+    protected function getMigrationFileName(string $migrationFileName): string
+    {
+        $timestamp = date('Y_m_d_His');
+        
+        $filesystem = $this->app->make(Filesystem::class);
+        
+        return Collection::make([database_path('migrations/')])
+            ->flatMap(fn($path) => $filesystem->glob($path . '*_' . $migrationFileName))
+            ->push(database_path("/migrations/{$timestamp}_{$migrationFileName}"))
+            ->first();
     }
 }
